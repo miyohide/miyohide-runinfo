@@ -1,7 +1,15 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+100.times do
+  Runlog.create(run_count: "sample1", run_at: Time.now,
+    temperature: rand(10.0..20.0).to_s,
+    latitude: rand(35.5..36.0).to_s,
+    longitude: rand(139.5..140.5).to_s)
+  sleep(1)
+end
+
+100.times do
+  Runlog.create(run_count: "sample2", run_at: Time.now,
+    temperature: rand(20.0..30.0).to_s,
+    latitude: rand(34.5..35.0).to_s,
+    longitude: rand(137.5..138.5).to_s)
+  sleep(1)
+end
