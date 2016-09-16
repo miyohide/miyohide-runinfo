@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>開始</th>
+      <th>終了</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @runlogs.each do |run_count, runlog| %>
+      <tr>
+        <td><%= run_count %></td>
+        <td><%= runlog[:min] %></td>
+        <td><%= runlog[:max] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
