@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'runlog/index'
-
-  get 'runlog/show'
+  get 'runlog/:run_count', to: 'runlog#detail', as: 'runlog_detail'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
