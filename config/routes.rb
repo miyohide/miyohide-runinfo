@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'runlog/index'
   get 'runlog/:run_count', to: 'runlog#detail', as: 'runlog_detail'
+  get 'runlog/:run_count/gpx_download/', to: 'runlog#gpx_download', as: 'runlog_gpx_download'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
