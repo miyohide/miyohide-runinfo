@@ -9,4 +9,28 @@ class Runlog < ActiveRecord::Base
     end
     rval
   end
+
+  def self.to_gpx(run_count)
+    require 'builder/xmlmarkup'
+    ret = ''
+    xml = ::Builder::XmlMarkup.new(target: ret, indent: 4)
+    xml.instruct!
+    xml.gpx(creator: "miyohide") {
+      xml.metadata {
+        xml.time(Time.now.xmlschema)
+      }
+      xml.trk {
+        xml.name(run_count)
+        xml.type("running")
+        xml.trkseg {
+          where(run_count: run_count).each do |runlog|
+            xml.trkpt(lat: runlog.latitude, lon: runlog.longitude) {
+              xml.time(runlog.run_at.xmlschema)
+            }
+          end
+        }
+      }
+    }
+    ret
+  end
 end
