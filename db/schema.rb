@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914134939) do
+ActiveRecord::Schema.define(version: 20160925132257) do
 
   create_table "runlogs", force: :cascade do |t|
     t.string   "run_count",   null: false
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20160914134939) do
     t.string   "longitude",   null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "gpx_file_name"
+    t.string   "gpx_content_type"
+    t.integer  "gpx_file_size"
+    t.datetime "gpx_updated_at"
   end
 
 end
