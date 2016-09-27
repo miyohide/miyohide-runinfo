@@ -1,0 +1,6 @@
+<%= form_for @track do |f| %>
+  <%= f.label :name %><br /><%= f.text_field :name %>
+  <br /><br />
+  <%= f.label :gpx %><br /><%= f.file_field :gpx %>
+  <%= f.submit %>
+<% end %>
