@@ -10,12 +10,12 @@ class Track < ActiveRecord::Base
       items = line.chomp.gsub(/{/, "").gsub(/}/, "").split(",")
       date_and_time = Time.parse(items[0].split(":", 2)[1])
       temp = items[1].split(":")[1]
-      ido = items[5].split(":")[1]
-      keido = items[6].split(":")[1]
+      keido = items[5].split(":")[1].gsub(/\"/, '')
+      ido = items[6].split(":")[1].gsub(/\"/, '')
 
       if ido.present? && keido.present?
         Runlog.create(run_count: name, run_at: date_and_time, temperature: temp,
-                      latitude: keido, longitude: ido)
+                      latitude: keido.to_f/100.0, longitude: ido.to_f/100.0)
       end
     end
   end

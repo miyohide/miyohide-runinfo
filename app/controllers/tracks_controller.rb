@@ -6,12 +6,10 @@ class TracksController < ApplicationController
   def create
     @track = Track.new(track_params)
 
-    respond_to do |format|
-      if @track.save
-        redirect_to runlog_index_path
-      else
-        render :new
-      end
+    if @track.save
+      redirect_to runlog_index_path
+    else
+      render :new
     end
   end
 
