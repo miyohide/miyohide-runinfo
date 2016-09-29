@@ -15,7 +15,8 @@ class Track < ActiveRecord::Base
 
       if ido.present? && keido.present?
         Runlog.create(run_count: name, run_at: date_and_time, temperature: temp,
-                      latitude: keido.to_f/100.0, longitude: ido.to_f/100.0)
+                      latitude: keido.to_f/100.0 + 0.178,
+                      longitude: ido.to_f/100.0 + 0.23763)
       end
     end
   end
