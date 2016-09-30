@@ -1,12 +1,17 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <h1>Runlog <%= @runlogs.first.run_count %></h1>
 <h1>Download GPX file</h1>
 <%= link_to "GPX download", runlog_gpx_download_path %>
+
+<%= line_chart @chart_data, xtitle: "Time", ytitle: "温度", height: "500px", min: "25.0" %>
+
 <table>
   <thead>
     <tr>
       <th>時刻</th>
       <th>緯度</th>
       <th>経度</th>
+      <th>温度</th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +20,7 @@
         <td><%= runlog.run_at %></td>
         <td><%= runlog.latitude %></td>
         <td><%= runlog.longitude %></td>
+        <td><%= runlog.temperature %></td>
       </tr>
     <% end %>
   </tbody>

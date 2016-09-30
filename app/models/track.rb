@@ -9,7 +9,7 @@ class Track < ActiveRecord::Base
     tempfile.split("\n").each do |line|
       items = line.chomp.gsub(/{/, "").gsub(/}/, "").split(",")
       date_and_time = Time.parse(items[0].split(":", 2)[1])
-      temp = items[1].split(":")[1]
+      temp = items[1].split(":")[1].gsub(/\"/, '')
       keido = items[5].split(":")[1].gsub(/\"/, '')
       ido = items[6].split(":")[1].gsub(/\"/, '')
 

@@ -5,6 +5,7 @@ class RunlogController < ApplicationController
 
   def detail
     @runlogs = Runlog.where(run_count: params[:run_count]).order(:run_at)
+    @chart_data = Runlog.where(run_count: params[:run_count]).map{|runlog| [runlog.run_at.to_s, runlog.temperature.to_f]}
   end
 
   def gpx_download
