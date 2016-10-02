@@ -10,6 +10,14 @@ class Runlog < ActiveRecord::Base
     rval
   end
 
+  def self.to_polyline(run_count)
+    polyline = []
+    where(run_count: run_count).each do |runlog|
+      polyline << {"lat": runlog.latitude, "lng": runlog.longitude, "time": runlog.run_at.to_i}
+    end
+    polyline
+  end
+
   def self.to_gpx(run_count)
     require 'builder/xmlmarkup'
     ret = ''
