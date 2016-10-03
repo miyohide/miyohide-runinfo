@@ -9,22 +9,14 @@
 <script>
 handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers([
-    {
-      "lat": 0,
-      "lng": 0,
-      "picture": {
-        "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
-        "width":  32,
-        "height": 32
-      },
-      "infowindow": "hello!"
-    }
-  ]);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-});
-  
+  polyline = <%= raw @polyline.to_json %>;
+// polyline = [{"lat":45.678295,"lng":-121.603813,"ele":438.626221,"time":1381851321},{"lat":45.678196,"lng":-121.603607,"ele":423.202148,"time":1381851363},{"lat":45.678181,"lng":-121.603607,"ele":421.108398,"time":1381851373},{"lat":45.678162,"lng":-121.603584,"ele":420.153442,"time":1381851383},{"lat":45.678123,"lng":-121.603569,"ele":422.561096,"time":1381851393},{"lat":45.678165,"lng":-121.6036,"ele":425.191284,"time":1381851403},{"lat":45.678169,"lng":-121.603607,"ele":425.262329,"time":1381851413}]
+
+handler.addPolyline(polyline); // and not addPolylines
+handler.bounds.extend(polyline[0]);
+handler.bounds.extend(polyline[ polyline.length - 1]);
+handler.fitMapToBounds();});
+
 </script>
 
 <%= line_chart @chart_data, xtitle: "Time", ytitle: "温度", height: "500px", min: "25.0" %>
