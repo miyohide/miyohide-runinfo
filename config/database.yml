@@ -19,5 +19,8 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: jdbcmssql
+  driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  url: 'jdbc:sqlserver://servername.database.windows.net;databaseName=databasename'
+  username: <%= ENV['SQL_SERVER_USER'] %>
+  password: <%= ENV['SQL_SERVER_PASS'] %>
