@@ -21,6 +21,6 @@ test:
 production:
   adapter: jdbcmssql
   driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
-  url: 'jdbc:sqlserver://servername.database.windows.net;databaseName=databasename'
+  url: <%= ENV['SQL_SERVER_URL'] %>
   username: <%= ENV['SQL_SERVER_USER'] %>
   password: <%= ENV['SQL_SERVER_PASS'] %>
