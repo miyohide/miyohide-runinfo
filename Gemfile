@@ -24,6 +24,7 @@ gem 'paperclip', '~> 5.0.0'
 gem 'chartkick'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'puma'
 
 group :development do
   gem 'quiet_assets'
