@@ -122,13 +122,13 @@ echo DB migration
 
 pushd "$DEPLOYMENT_TARGET"
 
-$JRUBY_EXE -S vendor/bundle/bin/rake db:migrate RAILS_ENV=production
+#$JRUBY_EXE -S vendor/bundle/bin/rake db:migrate RAILS_ENV=production
 
-exitWithMessageOnError "DB Migration failed"
+#exitWithMessageOnError "DB Migration failed"
 
-$JRUBY_EXE -S vendor/bundle/bin/rake db:seed RAILS_ENV=production
+#$JRUBY_EXE -S vendor/bundle/bin/rake db:seed RAILS_ENV=production
 
-exitWithMessageOnError "DB Migration failed"
+#exitWithMessageOnError "DB Migration failed"
 
 popd
 ##################################################################################################################################
