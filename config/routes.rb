@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'runlog#index'
   get 'runlog/index'
   get 'runlog/:run_count', to: 'runlog#detail', as: 'runlog_detail'
   get 'runlog/:run_count/gpx_download/', to: 'runlog#gpx_download', as: 'runlog_gpx_download'
