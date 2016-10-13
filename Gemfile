@@ -25,6 +25,8 @@ gem 'chartkick'
 gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'puma'
+gem 'lograge'
+gem 'logstash-event'
 
 group :development do
   gem 'quiet_assets'
