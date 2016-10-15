@@ -1,4 +1,4 @@
-class RunlogController < ApplicationController
+class RunlogsController < ApplicationController
   def index
     @runlogs = Runlog.runlog_index
   end

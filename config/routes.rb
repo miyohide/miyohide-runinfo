@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root 'runlog#index'
-  get 'runlog/index'
-  get 'runlog/:run_count', to: 'runlog#detail', as: 'runlog_detail'
-  get 'runlog/:run_count/gpx_download/', to: 'runlog#gpx_download', as: 'runlog_gpx_download'
+  root 'runlogs#index'
+  get 'runlogs/index'
+  get 'runlogs/:run_count', to: 'runlogs#detail', as: 'runlogs_detail'
+  get 'runlogs/:run_count/gpx_download/', to: 'runlogs#gpx_download', as: 'runlogs_gpx_download'
   resources :tracks, only: [:create, :new]
 
   # The priority is based upon order of creation: first created -> highest priority.
