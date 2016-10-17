@@ -28,6 +28,8 @@ gem 'puma'
 gem 'lograge'
 gem 'logstash-event'
 
+gem 'bootstrap-sass', '~> 3.3.6'
+
 group :development do
   gem 'quiet_assets'
 end
