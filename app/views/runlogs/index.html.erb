@@ -1,20 +1,22 @@
-<table>
-  <thead>
-    <tr>
-      <th>名前</th>
-      <th>開始</th>
-      <th>終了</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @runlogs.each do |run_count, runlog| %>
+<div class="container">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= run_count %></td>
-        <td><%= runlog[:min] %></td>
-        <td><%= runlog[:max] %></td>
-        <td><%= link_to "詳細", runlogs_detail_path(run_count: run_count)%></td>
+        <th>名前</th>
+        <th>開始</th>
+        <th>終了</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @runlogs.each do |run_count, runlog| %>
+        <tr>
+          <td><%= run_count %></td>
+          <td><%= utc2jst(runlog[:min]) %></td>
+          <td><%= utc2jst(runlog[:max]) %></td>
+          <td><%= link_to "詳細", runlogs_detail_path(run_count: run_count), class: "btn btn-default"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
