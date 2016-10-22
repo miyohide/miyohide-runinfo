@@ -33,7 +33,7 @@ handler.fitMapToBounds();});
     <tbody>
       <% @runlogs.each do |runlog| %>
         <tr>
-          <td><%= runlog.run_at %></td>
+          <td><%= utc2jst(runlog.run_at) %></td>
           <td><%= runlog.latitude %></td>
           <td><%= runlog.longitude %></td>
           <td><%= runlog.temperature %></td>
