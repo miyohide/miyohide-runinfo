@@ -36,7 +36,11 @@ handler.fitMapToBounds();});
           <td><%= utc2jst(runlog.run_at) %></td>
           <td><%= runlog.latitude %></td>
           <td><%= runlog.longitude %></td>
-          <td><%= runlog.temperature %></td>
+          <% if runlog.temperature.is_a?(String) %>
+            <td><%= runlog.temperature.gsub(/"/, '').to_f %></td>
+          <% else %>
+            <td><%= runlog.temperature %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
