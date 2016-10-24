@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925132257) do
+ActiveRecord::Schema.define(version: 20161024123705) do
 
   create_table "runlogs", force: :cascade do |t|
     t.string   "run_count",   null: false
@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 20160925132257) do
     t.string   "temperature", null: false
     t.string   "latitude",    null: false
     t.string   "longitude",   null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   create_table "tracks", force: :cascade do |t|
