@@ -33,7 +33,7 @@ handler.fitMapToBounds();});
     <tbody>
       <% @runlogs.each do |runlog| %>
         <tr>
-          <td><%= utc2jst(runlog.run_at) %></td>
+          <td><%= utc2jst(Time.parse(runlog.dateandtime)) %></td>
           <td><%= runlog.latitude %></td>
           <td><%= runlog.longitude %></td>
           <% if runlog.temperature.is_a?(String) %>

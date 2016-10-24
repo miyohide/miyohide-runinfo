@@ -8,13 +8,13 @@ class Track < ActiveRecord::Base
     tempfile = gpx.queued_for_write[:original].read
     tempfile.split("\n").each do |line|
       items = line.chomp.gsub(/{/, "").gsub(/}/, "").split(",")
-      date_and_time = Time.parse(items[0].split(":", 2)[1])
+      date_and_time = items[0].split(":", 2)[1].gsub(/\"/, '')
       temp = items[1].split(":")[1].gsub(/\"/, '')
       keido = items[5].split(":")[1].gsub(/\"/, '')
       ido = items[6].split(":")[1].gsub(/\"/, '')
 
       if ido.present? && keido.present?
-        Runlog.create(run_count: name, run_at: date_and_time, temperature: temp,
+        Runlog.create(run_count: name, dateandtime: date_and_time, temperature: temp,
                       latitude: keido.to_f/100.0 + 0.178,
                       longitude: ido.to_f/100.0 + 0.23763)
       end

@@ -1,7 +1,7 @@
 class Runlog < ActiveRecord::Base
   def self.runlog_index
-    run_at_max = group(:run_count).maximum(:run_at)
-    run_at_min = group(:run_count).minimum(:run_at)
+    run_at_max = group(:run_count).maximum(:dateandtime)
+    run_at_min = group(:run_count).minimum(:dateandtime)
 
     rval = {}
     run_at_max.each do |key, val|
@@ -13,7 +13,7 @@ class Runlog < ActiveRecord::Base
   def self.to_polyline(run_count)
     polyline = []
     where(run_count: run_count).each do |runlog|
-      polyline << {lat: runlog.latitude.to_f, lng: runlog.longitude.to_f, time: runlog.run_at.to_i}
+      polyline << {lat: runlog.latitude.to_f, lng: runlog.longitude.to_f, time: Time.parse(runlog.dateandtime).to_i}
     end
     polyline
   end
@@ -33,7 +33,7 @@ class Runlog < ActiveRecord::Base
         xml.trkseg {
           where(run_count: run_count).each do |runlog|
             xml.trkpt(lat: runlog.latitude, lon: runlog.longitude) {
-              xml.time(runlog.run_at.xmlschema)
+              xml.time(Time.parse(runlog.dateandtime).xmlschema)
             }
           end
         }

@@ -7,7 +7,7 @@ class TracksController < ApplicationController
     @track = Track.new(track_params)
 
     if @track.save
-      redirect_to runlog_index_path
+      redirect_to runlogs_index_path
     else
       render :new
     end
