@@ -6,7 +6,7 @@ class RunlogsController < ApplicationController
   def detail
     @runlogs = Runlog.where(run_count: params[:run_count]).order(:dateandtime)
     @chart_data = Runlog.where(run_count: params[:run_count]).map do |runlog|
-       [Time.parse(runlog.dateandtime).to_s, runlog.temperature.to_f]
+       [Time.zone.parse(runlog.dateandtime).to_s, runlog.temperature.to_f]
      end
     @polyline = Runlog.to_polyline(params[:run_count])
   end
