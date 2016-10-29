@@ -13,7 +13,9 @@ class Runlog < ActiveRecord::Base
   def self.to_polyline(run_count)
     polyline = []
     where(run_count: run_count).each do |runlog|
-      polyline << {lat: runlog.latitude.to_f/100, lng: runlog.longitude.to_f/100}
+      if runlog.latitude.length != 0 and runlog.longitude.length != 0
+        polyline << {lat: runlog.latitude.to_f/100, lng: runlog.longitude.to_f/100}
+      end
     end
     polyline
   end
