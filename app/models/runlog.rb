@@ -34,7 +34,7 @@ class Runlog < ActiveRecord::Base
         xml.type("running")
         xml.trkseg {
           where(run_count: run_count).each do |runlog|
-            xml.trkpt(lat: runlog.latitude, lon: runlog.longitude) {
+            xml.trkpt(lat: runlog.latitude.to_f/100, lon: runlog.longitude.to_f/100) {
               xml.time(Time.parse(runlog.dateandtime).xmlschema)
             }
           end
