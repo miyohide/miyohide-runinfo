@@ -9,8 +9,7 @@ Rails.application.configure do
     exceptions = %w(controller action format id)
     {
       host: event.payload[:host],
-      time: event.time,
-      timespamp: event.time,
+      timestamp: event.time,
       params: event.payload[:params].except(*exceptions)
     }
   end
